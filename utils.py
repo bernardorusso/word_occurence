@@ -2,7 +2,12 @@
 def getfeatures(txt):
     bag = nltk.word_tokenize(txt.upper())
     bag = [w for w in bag if w.isalpha() and len(w)>2 and len(w)<20]
-    return unique_elts(bag)
+    return bag
+
+# Bag of all unique words within the text
+def getuniques(txt):
+    uniquesbag = unique_elts(getfeatures(txt))
+    return uniquesbag
 
 # Strips all punctuation from a string
 def rem_punct(w):
