@@ -7,21 +7,22 @@ class wocc():
         Xs = [self.feat(x) for x in X_data]
         for i in range(len(Y_data)):
             cls = Y_data[i]
-            if cls in self.data.keys():
-                self.data[cls] += Xs[i]
-            else:
-                self.data[cls] = Xs[i]
+            for w in Xs[i]:
+                if cls in self.data.keys():
+                    self.data[cls].setdefault(w,0)
+                    self.data[cls][w] += 1
+                else:
+                    self.data.setdefault(cls,{w:1})
     
     def classify(self, X_data):
         Xs = [self.feat(x) for x in X_data]
-        for i in self.data.keys():
-            self.data[i] = unique_elts(self.data[i])
-        Y_clss = []
+        Y_data = []
+        clss = self.data.keys()
         for x in Xs:
-            clss_prob = dict([[cls,0] for cls in self.data.keys()])
-            for cls in self.data.keys():
-                cls_fts = self.data[cls]
-                clss_prob[cls] += len([feat for feat in x if feat in cls_fts])
-            cls = max(clss_prob.iteritems(), key=op.itemgetter(1))[0]
-            Y_clss.append(cls)
-        return Y_clss
+            cls_occs = [0 for c in clss]
+            for j in range(len(clss)):
+                n = sum([self.data[cls][w] for w in x if w in self.data[cls].keys()])
+                cls_occs = n
+            p = cls_oocs.index(max(cls_occs))
+            Y_data.append(clss[p])
+        return Y_data
