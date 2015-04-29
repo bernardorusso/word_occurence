@@ -1,4 +1,4 @@
-class wocc():
+class unique_wocc():
     def __init__(self, get_features):
         self.data = {}
         self.feat = get_features
