@@ -21,6 +21,7 @@ class wocc():
         for x in Xs:
             cls_occs = [0 for c in clss]
             for j in range(len(clss)):
+                cls = clss[j]
                 n = sum([self.data[cls][w] for w in x if w in self.data[cls].keys()])
                 cls_occs = n
             p = cls_oocs.index(max(cls_occs))
