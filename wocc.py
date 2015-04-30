@@ -24,6 +24,6 @@ class wocc():
                 cls = clss[j]
                 n = sum([self.data[cls][w] for w in x if w in self.data[cls].keys()])
                 cls_occs = n
-            p = cls_oocs.index(max(cls_occs))
+            p = cls_occs.index(max(cls_occs))
             Y_data.append(clss[p])
         return Y_data
