@@ -1,2 +1,3 @@
-# word_occurence
-Word Occurence based Document classifier
+# Word Occurence Classifier
+
+A Word Occurence based Document classifier
